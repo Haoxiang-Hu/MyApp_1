@@ -26,7 +26,11 @@ for lt, ln, el in zip(lat, lon, elev):
     fg.add_child(folium.CircleMarker(location = [lt,ln], radius = 6, popup=folium.Popup(iframe), 
     fill_color = color_producer(el), color = 'black', fill = True, fill_opacity = 0.7))
 
-fg.add_child(folium.GeoJson(data=(open('world.json','r',encoding='utf-8-sig').read())))
+#Stylizing the Population Layer
+fg.add_child(folium.GeoJson(data=open('world.json','r',encoding='utf-8-sig').read(),
+style_function=lambda x: {'fillColor':'green' if x['properties']['POP2005'] < 1000000 
+else 'orange' if 1000000 <= x['properties']['POP2005'] < 2000000
+else 'red'}))
 
 map.add_child(fg)
 
