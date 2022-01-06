@@ -21,6 +21,7 @@ Height: %s m
 
 map = folium.Map(location = [37.43, -121.89], zoom_start=6, tiles = "Stamen Terrain")
 
+#Adding and Stylizing Markers Layer
 fgv = folium.FeatureGroup(name = "Volcanoes")
 
 for lt, ln, el in zip(lat, lon, elev):
